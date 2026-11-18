@@ -7,11 +7,12 @@
 
 ## 1. Giới Thiệu Dự Án
 
-**Bánh kẹo Thịnh Vượng** là website trưng bày sản phẩm (Product Showcase & Brand Introduction), không phải là sàn thương mại điện tử phức tạp (không giỏ hàng, không thanh toán, không đăng nhập tài khoản). 
+**Bánh kẹo Thịnh Vượng** là website trưng bày sản phẩm (Product Showcase & Brand Introduction), không phải là sàn thương mại điện tử phức tạp (không giỏ hàng, không thanh toán, không đăng nhập tài khoản).
 
 Mục tiêu chính là giúp khách hàng và các gia đình dễ dàng khám phá thế giới bánh kẹo tuổi thơ, bim bim giòn tan, đồ chơi trẻ em an toàn và nhanh chóng liên hệ trực tiếp với cửa hàng qua **Hotline** hoặc **Zalo**.
 
 ### 4 Nhóm ngành hàng chủ đạo:
+
 - 🍬 **Bánh kẹo:** Kẹo dẻo trái cây, bánh quy bơ Đan Mạch, kẹo mút tuổi thơ, sô-cô-la hạnh nhân...
 - 🥨 **Bim bim:** Snack khoai tây chiên giòn, bắp rang bơ phô mai, bánh gạo nướng tảo biển, mực nướng cay Thái Lan...
 - 🧸 **Đồ chơi:** Xếp hình lego mini rèn luyện tư duy, súng bắn bong bóng tự động, xe trớn địa hình chống va đập, đất nặn sinh học an toàn...
@@ -59,7 +60,7 @@ thinhvuong/
 │   │   │   └── [slug]/
 │   │   │       └── page.tsx        # Trang chi tiết sản phẩm tĩnh SSG (generateStaticParams)
 │   │   ├── about/
-│   │   │   └── page.tsx            # Câu chuyện cửa hàng gia đình 15+ năm, 4 giá trị cốt lõi
+│   │   │   └── page.tsx            # Câu chuyện cửa hàng gia đình Gần 10 năm, 4 giá trị cốt lõi
 │   │   ├── contact/
 │   │   │   └── page.tsx            # Thông tin liên hệ, bản đồ chỉ đường, đặt quà sự kiện
 │   │   ├── not-found.tsx           # Trang 404 thân thiện
@@ -85,23 +86,28 @@ thinhvuong/
 ## 5. Hướng Dẫn Vận Hành & Khởi Chạy
 
 ### Chạy ở chế độ phát triển (Development):
+
 ```bash
 npm run dev
 # hoặc
 pnpm dev
 ```
+
 Truy cập: `http://localhost:3000`
 
 ### Kiểm tra cú pháp (Linting):
+
 ```bash
 npm run lint
 ```
 
 ### Đóng gói sản phẩm (Production Build):
+
 ```bash
 npm run build
 npm start
 ```
+
 > Tất cả các trang bao gồm cả 20 trang sản phẩm đều được xuất ra dạng **Static Site Generation (SSG)** với tốc độ tải trang gần như tức thì ($< 100\text{ms}$).
 
 ---
@@ -109,8 +115,10 @@ npm start
 ## 6. Hướng Dẫn Thêm Hoặc Sửa Sản Phẩm
 
 Để cập nhật sản phẩm mới:
+
 1. Mở file [src/data/products.ts](file:///home/thinh/Project/thinhvuong/src/data/products.ts).
 2. Thêm một đối tượng sản phẩm mới vào mảng `products`:
+
 ```typescript
 {
   id: "prod-bk-xx",
@@ -129,4 +137,5 @@ npm start
   tasteNote: "Ngọt thanh tự nhiên",
 }
 ```
+
 Website sẽ tự động cập nhật danh mục, bộ lọc tìm kiếm và sinh trang chi tiết `/products/[slug]` tương ứng!

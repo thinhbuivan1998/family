@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bánh kẹo Thịnh Vượng - Mỗi ngày một chút ngọt ngào!",
     description:
-      "Cửa hàng bánh kẹo và đồ chơi gia đình uy tín với hơn 15 năm gắn bó cùng tuổi thơ.",
+      "Cửa hàng bánh kẹo và đồ chơi gia đình uy tín với gần 10 năm gắn bó cùng tuổi thơ.",
   },
 };
 

@@ -2,10 +2,21 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, MessageCircle, Heart, Star, Sparkles, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  MessageCircle,
+  Heart,
+  Star,
+  Sparkles,
+  ShieldCheck,
+} from "lucide-react";
 import { Button } from "@/components/common/Button";
 import { siteConfig } from "@/data/site-config";
-import { CandyLollipopIcon, CandySweetIcon, SparkleStar } from "@/components/common/DecorativeCandy";
+import {
+  CandyLollipopIcon,
+  CandySweetIcon,
+  SparkleStar,
+} from "@/components/common/DecorativeCandy";
 import { FadeIn, FloatingElement } from "@/components/common/MotionWrapper";
 
 export function HeroBanner() {
@@ -111,7 +122,7 @@ export function HeroBanner() {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-xs sm:text-sm text-[#2D2320]">
-                      15+ Năm
+                      Gần 10 Năm
                     </h4>
                     <p className="text-[11px] text-[#7A6F68]">Gắn bó mọi nhà</p>
                   </div>
@@ -125,7 +136,9 @@ export function HeroBanner() {
                     <h4 className="font-heading font-bold text-xs sm:text-sm text-[#2D2320]">
                       100% Date Mới
                     </h4>
-                    <p className="text-[11px] text-[#7A6F68]">Nguồn gốc rõ ràng</p>
+                    <p className="text-[11px] text-[#7A6F68]">
+                      Nguồn gốc rõ ràng
+                    </p>
                   </div>
                 </div>
 
@@ -137,7 +150,9 @@ export function HeroBanner() {
                     <h4 className="font-heading font-bold text-xs sm:text-sm text-[#2D2320]">
                       Tận Tâm
                     </h4>
-                    <p className="text-[11px] text-[#7A6F68]">Như người trong nhà</p>
+                    <p className="text-[11px] text-[#7A6F68]">
+                      Như người trong nhà
+                    </p>
                   </div>
                 </div>
               </div>
@@ -172,7 +187,12 @@ export function HeroBanner() {
                   </div>
 
                   {/* Floating pill badge 1: Top Right */}
-                  <FloatingElement duration={4} amplitude={5} delay={0.2} className="absolute -top-4 -right-2 sm:-right-4">
+                  <FloatingElement
+                    duration={4}
+                    amplitude={5}
+                    delay={0.2}
+                    className="absolute -top-4 -right-2 sm:-right-4"
+                  >
                     <div className="bg-white rounded-2xl p-2.5 sm:p-3 border border-[#EED7BE] shadow-lg flex items-center gap-2.5 rotate-3 hover:rotate-0 transition-transform">
                       <div className="w-8 h-8 rounded-xl bg-[#FFB83F] flex items-center justify-center">
                         <Sparkles className="w-4 h-4 text-[#2D2320]" />
@@ -189,7 +209,12 @@ export function HeroBanner() {
                   </FloatingElement>
 
                   {/* Floating pill badge 2: Bottom Left */}
-                  <FloatingElement duration={5} amplitude={6} delay={0.8} className="absolute -bottom-4 -left-2 sm:-left-4">
+                  <FloatingElement
+                    duration={5}
+                    amplitude={6}
+                    delay={0.8}
+                    className="absolute -bottom-4 -left-2 sm:-left-4"
+                  >
                     <div className="bg-white rounded-2xl p-2.5 sm:p-3 border border-[#EED7BE] shadow-lg flex items-center gap-2.5 -rotate-2 hover:rotate-0 transition-transform">
                       <div className="w-8 h-8 rounded-xl bg-[#79D8B1] flex items-center justify-center">
                         <Heart className="w-4 h-4 text-[#164E39]" />

@@ -14,7 +14,7 @@ import { Button } from "@/components/common/Button";
 export const metadata: Metadata = {
   title: "Câu Chuyện Cửa Hàng - Bánh kẹo Thịnh Vượng",
   description:
-    "Hơn 15 năm gắn bó cùng tuổi thơ và nụ cười của các gia đình. Khám phá hành trình và giá trị cốt lõi của Bánh kẹo Thịnh Vượng.",
+    "Gần 10 năm gắn bó cùng tuổi thơ và nụ cười của các gia đình. Khám phá hành trình và giá trị cốt lõi của Bánh kẹo Thịnh Vượng.",
 };
 
 export default function AboutPage() {
@@ -49,7 +49,7 @@ export default function AboutPage() {
     <div className="py-8 sm:py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-16">
       {/* 1. Header Section */}
       <SectionHeading
-        badge="Hơn 15 Năm Gắn Bó"
+        badge="Gần 10 năm Gắn Bó"
         badgeVariant="sunshine"
         title="Câu Chuyện Tiệm Bánh Kẹo Gia Đình"
         highlightText="Gia Đình"
@@ -71,7 +71,10 @@ export default function AboutPage() {
             </h2>
 
             {siteConfig.fullStory.map((paragraph, index) => (
-              <p key={index} className="text-sm sm:text-base text-[#61554E] leading-relaxed">
+              <p
+                key={index}
+                className="text-sm sm:text-base text-[#61554E] leading-relaxed"
+              >
                 {paragraph}
               </p>
             ))}
@@ -121,7 +124,9 @@ export default function AboutPage() {
             >
               <div>
                 <span className="w-12 h-12 rounded-2xl bg-[#FFF6E9] border border-[#F3E5D4] flex items-center justify-center mb-4">
-                  {idx === 0 && <ShieldCheck className="w-6 h-6 text-[#FF777B]" />}
+                  {idx === 0 && (
+                    <ShieldCheck className="w-6 h-6 text-[#FF777B]" />
+                  )}
                   {idx === 1 && <Sparkles className="w-6 h-6 text-[#FFB83F]" />}
                   {idx === 2 && <Heart className="w-6 h-6 text-[#4DBF92]" />}
                   {idx === 3 && <Smile className="w-6 h-6 text-[#589FE9]" />}
@@ -177,7 +182,8 @@ export default function AboutPage() {
           Mời Bạn Ghé Thăm Tiệm Thịnh Vượng!
         </h3>
         <p className="text-sm sm:text-base text-[#6B5E57] max-w-xl mx-auto leading-relaxed">
-          Chúng tôi luôn sẵn lòng chào đón bạn và gia đình đến trải nghiệm không gian ngọt ngào và lựa chọn những món ăn vặt ưng ý nhất.
+          Chúng tôi luôn sẵn lòng chào đón bạn và gia đình đến trải nghiệm không
+          gian ngọt ngào và lựa chọn những món ăn vặt ưng ý nhất.
         </p>
         <div className="pt-3 flex flex-wrap justify-center gap-3">
           <Button

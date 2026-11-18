@@ -1,6 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import { ShieldCheck, Sparkles, HeartHandshake, Smile, ArrowRight } from "lucide-react";
+import {
+  ShieldCheck,
+  Sparkles,
+  HeartHandshake,
+  Smile,
+  ArrowRight,
+} from "lucide-react";
 import { siteConfig } from "@/data/site-config";
 import { Button } from "@/components/common/Button";
 
@@ -46,9 +52,13 @@ export function AboutStoreSection() {
 
             {/* Experience Badge */}
             <div className="absolute -bottom-5 right-6 bg-[#FFB83F] text-[#2D2320] px-4 py-2.5 rounded-2xl shadow-lg border border-[#F2A321] flex items-center gap-2">
-              <span className="font-heading font-extrabold text-xl leading-none">15+</span>
+              <span className="font-heading font-extrabold text-xl leading-none">
+                Gần 10
+              </span>
               <span className="text-xs font-bold leading-tight">
-                Năm gắn bó<br />cùng tuổi thơ
+                Năm gắn bó
+                <br />
+                cùng tuổi thơ
               </span>
             </div>
           </div>
@@ -62,7 +72,8 @@ export function AboutStoreSection() {
           </div>
 
           <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-[#2D2320] leading-snug tracking-tight">
-            Nơi Lưu Giữ Ký Ức & <span className="text-[#FF777B]">Gửi Gắm Yêu Thương</span>
+            Nơi Lưu Giữ Ký Ức &{" "}
+            <span className="text-[#FF777B]">Gửi Gắm Yêu Thương</span>
           </h2>
 
           <p className="mt-4 text-sm sm:text-base text-[#61554E] leading-relaxed">
