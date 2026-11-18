@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle, ArrowRight, Sparkles } from "lucide-react";
@@ -13,6 +15,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, priority = false }: ProductCardProps) {
+  const [imgSrc, setImgSrc] = useState(product.image);
+
   const getCategoryColor = (
     cat: string
   ): "sunshine" | "coral" | "mint" | "sky" | "neutral" => {
@@ -43,12 +47,18 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       {/* Product Image & Badges */}
       <div className="relative aspect-[4/3] w-full bg-[#FAF0E1] overflow-hidden">
         <Image
-          src={product.image}
+          src={imgSrc}
           alt={product.name}
           fill
           priority={priority}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
+          onError={() => {
+            // Fallback image in case of network or upstream image issue
+            setImgSrc(
+              "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=800&q=80"
+            );
+          }}
         />
 
         {/* Status badges */}

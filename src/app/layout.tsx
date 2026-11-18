@@ -63,6 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
+      data-scroll-behavior="smooth"
       className={`${fredoka.variable} ${beVietnamPro.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-[#FFF7E9] text-[#2D2320] flex flex-col font-sans selection:bg-[#FFB83F] selection:text-[#2D2320]">

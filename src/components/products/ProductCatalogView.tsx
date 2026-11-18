@@ -17,12 +17,21 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Directly derive selectedCategory from URL search params as single source of truth
-  const selectedCategory = searchParams.get("category") || "all";
+  const categoryFromUrl = searchParams.get("category") || "all";
+  const [prevCategoryFromUrl, setPrevCategoryFromUrl] = useState(categoryFromUrl);
+  const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
+
+  // Synchronize state when URL parameter changes (e.g. from homepage or drawer navigation)
+  if (prevCategoryFromUrl !== categoryFromUrl) {
+    setPrevCategoryFromUrl(categoryFromUrl);
+    setSelectedCategory(categoryFromUrl);
+  }
+
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filterType, setFilterType] = useState<"all" | "new" | "bestseller">("all");
 
   const handleCategoryChange = (slug: string) => {
+    setSelectedCategory(slug);
     if (slug === "all") {
       router.push("/products", { scroll: false });
     } else {
@@ -31,6 +40,7 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
   };
 
   const handleClearFilters = () => {
+    setSelectedCategory("all");
     setSearchQuery("");
     setFilterType("all");
     router.push("/products", { scroll: false });
@@ -106,7 +116,7 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar sm:flex-wrap pb-1 pt-1 -mx-2 px-2">
             <button
               onClick={() => handleCategoryChange("all")}
-              className={`shrink-0 min-h-[40px] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+              className={`shrink-0 min-h-[40px] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
                 selectedCategory === "all"
                   ? "bg-[#FFB83F] text-[#2D2320] shadow-sm"
                   : "bg-[#FFF6E9] text-[#5A4E46] hover:bg-[#FFECCB]"
@@ -124,7 +134,7 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
                 <button
                   key={cat.slug}
                   onClick={() => handleCategoryChange(cat.slug)}
-                  className={`shrink-0 min-h-[40px] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+                  className={`shrink-0 min-h-[40px] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
                     isSelected
                       ? "bg-[#FF777B] text-white shadow-sm"
                       : "bg-[#FFF6E9] text-[#5A4E46] hover:bg-[#FFECCB]"

@@ -132,7 +132,7 @@ export const products: Product[] = [
     description: "Mực cán mỏng tẩm ướp sốt cay ngọt đậm đà chuẩn vị đường phố Bangkok, kích thích vị giác.",
     detailedDescription:
       "Bento Thái Lan là món khoái khẩu của các tín đồ ăn vặt cay. Miếng mực giòn thơm được tẩm sốt ớt cay nồng hòa cùng vị ngọt thơm của gia vị đặc chế, tạo nên hương vị bùng nổ ăn là ghiền.",
-    image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281699?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=800&q=80",
     isFeatured: false,
     isNew: false,
     isBestSeller: true,
