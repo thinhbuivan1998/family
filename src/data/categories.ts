@@ -1,0 +1,48 @@
+import { Category } from "@/types/product";
+
+export const categories: Category[] = [
+  {
+    id: "cat-1",
+    name: "Bánh kẹo",
+    slug: "banh-keo",
+    description: "Kẹo dẻo trái cây, bánh quy bơ thơm lừng, sô-cô-la ngọt ngào cho mọi lứa tuổi.",
+    iconName: "Candy",
+    color: "sunshine",
+    badgeText: "Hơn 50+ món",
+    image: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=800&q=80",
+    itemCount: 6,
+  },
+  {
+    id: "cat-2",
+    name: "Bim bim",
+    slug: "bim-bim",
+    description: "Snack khoai tây thái mỏng, bắp rang bơ, bim bim giòn tan đậm đà vị ngon.",
+    iconName: "Flame",
+    color: "coral",
+    badgeText: "Giòn rụm cực đã",
+    image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=800&q=80",
+    itemCount: 5,
+  },
+  {
+    id: "cat-3",
+    name: "Đồ chơi",
+    slug: "do-choi",
+    description: "Đồ chơi trí tuệ, mô hình lắp ghép, xe quán tính và đồ chơi an toàn cho bé yêu.",
+    iconName: "Gamepad2",
+    color: "sky",
+    badgeText: "An toàn & Bổ ích",
+    image: "https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?auto=format&fit=crop&w=800&q=80",
+    itemCount: 5,
+  },
+  {
+    id: "cat-4",
+    name: "Sản phẩm khác",
+    slug: "san-pham-khac",
+    description: "Thạch rau câu mát lạnh, nước ép hoa quả giải nhiệt, set quà tiệc sinh nhật.",
+    iconName: "Gift",
+    color: "mint",
+    badgeText: "Tiện lợi mỗi ngày",
+    image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80",
+    itemCount: 4,
+  },
+];

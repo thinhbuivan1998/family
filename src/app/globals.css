@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
+@theme {
+  --color-cream: #FFF7E9;
+  --color-cream-light: #FFFCF7;
+  --color-cream-dark: #F6E6CA;
+
+  --color-sunshine: #FFB83F;
+  --color-sunshine-hover: #F2A321;
+  --color-sunshine-light: #FFF4DE;
+
+  --color-coral: #FF777B;
+  --color-coral-hover: #F05C61;
+  --color-coral-light: #FFEBEB;
+
+  --color-mint: #79D8B1;
+  --color-mint-hover: #5FC89D;
+  --color-mint-light: #EBF8F2;
+
+  --color-sky-candy: #7CB9F5;
+  --color-sky-hover: #5EA5EB;
+  --color-sky-light: #EFF6FE;
+
+  --color-charcoal: #2D2320;
+  --color-charcoal-muted: #7A6F68;
+  --color-charcoal-light: #B4A9A2;
+
+  --font-fredoka: var(--font-fredoka), cursive, sans-serif;
+  --font-be-vietnam: var(--font-be-vietnam), sans-serif;
+
+  --shadow-soft: 0 10px 30px -10px rgba(139, 92, 43, 0.08), 0 4px 12px -2px rgba(139, 92, 43, 0.04);
+  --shadow-card: 0 12px 28px -6px rgba(142, 85, 41, 0.09), 0 4px 10px -2px rgba(142, 85, 41, 0.05);
+  --shadow-hover: 0 20px 38px -8px rgba(142, 85, 41, 0.16), 0 8px 16px -4px rgba(142, 85, 41, 0.08);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FFF7E9;
+  --foreground: #2D2320;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-be-vietnam), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-fredoka), cursive, sans-serif;
+}
+
+/* Custom rounded utility helpers */
+.rounded-playful {
+  border-radius: 1.5rem;
+}
+
+.rounded-playful-lg {
+  border-radius: 2rem;
+}
+
+.rounded-playful-xl {
+  border-radius: 2.5rem;
+}
+
+/* Subtle dotted pattern for sweet confectionery feel */
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(255, 184, 63, 0.18) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Hide scrollbar for clean horizontal pill scrolling on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF7E9;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8D3B8;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FFB83F;
 }
