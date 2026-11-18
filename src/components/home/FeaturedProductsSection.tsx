@@ -5,10 +5,21 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/products/ProductCard";
 import { Button } from "@/components/common/Button";
-import { StaggerContainer, StaggerItem, FadeIn } from "@/components/common/MotionWrapper";
+import { FadeIn } from "@/components/common/MotionWrapper";
 
 export function FeaturedProductsSection() {
-  const featuredProducts = products.filter((p) => p.isFeatured).slice(0, 8);
+  // Ensure balanced representation of all 4 categories in featured products
+  const featuredBanhKeo = products.filter((p) => p.category === "banh-keo" && p.isFeatured).slice(0, 2);
+  const featuredBimBim = products.filter((p) => p.category === "bim-bim" && p.isFeatured).slice(0, 2);
+  const featuredDoChoi = products.filter((p) => p.category === "do-choi" && p.isFeatured).slice(0, 2);
+  const featuredKhac = products.filter((p) => p.category === "san-pham-khac" && p.isFeatured).slice(0, 2);
+
+  const featuredProducts = [
+    ...featuredBanhKeo,
+    ...featuredBimBim,
+    ...featuredDoChoi,
+    ...featuredKhac,
+  ];
 
   return (
     <section className="py-12 sm:py-16 bg-[#FFFBF4] border-y border-[#EFE3D2]/70">
@@ -43,14 +54,14 @@ export function FeaturedProductsSection() {
           </div>
         </FadeIn>
 
-        {/* Product Grid with Stagger Animation */}
-        <StaggerContainer delay={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-fadeInGrid">
           {featuredProducts.map((product) => (
-            <StaggerItem key={product.id} className="flex">
+            <div key={product.id} className="flex h-full">
               <ProductCard product={product} />
-            </StaggerItem>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
 
         {/* Mobile View All Button */}
         <div className="mt-8 text-center md:hidden">

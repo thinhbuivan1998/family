@@ -7,7 +7,7 @@ import { ArrowRight, Candy, Flame, Gamepad2, Gift } from "lucide-react";
 import { categories } from "@/data/categories";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { Badge } from "@/components/common/Badge";
-import { StaggerContainer, StaggerItem, FadeIn } from "@/components/common/MotionWrapper";
+import { FadeIn } from "@/components/common/MotionWrapper";
 
 export function CategorySection() {
   const getIcon = (iconName: string) => {
@@ -51,9 +51,9 @@ export function CategorySection() {
         />
       </FadeIn>
 
-      <StaggerContainer delay={0.1} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-fadeInGrid">
         {categories.map((cat) => (
-          <StaggerItem key={cat.slug} className="flex">
+          <div key={cat.slug} className="flex">
             <Link
               href={`/products?category=${cat.slug}`}
               className={`group w-full rounded-[2rem] bg-white border-2 border-[#EFE4D4] p-3 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${getBorderColor(
@@ -102,9 +102,9 @@ export function CategorySection() {
                 </span>
               </div>
             </Link>
-          </StaggerItem>
+          </div>
         ))}
-      </StaggerContainer>
+      </div>
     </section>
   );
 }

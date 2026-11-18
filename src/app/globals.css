@@ -78,6 +78,22 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   scrollbar-width: none;
 }
 
+/* Reliable CSS fade-in animation */
+@keyframes fadeInGrid {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInGrid {
+  animation: fadeInGrid 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

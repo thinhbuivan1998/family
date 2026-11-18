@@ -7,7 +7,7 @@ import { Product } from "@/types/product";
 import { categories } from "@/data/categories";
 import { ProductCard } from "@/components/products/ProductCard";
 import { Button } from "@/components/common/Button";
-import { StaggerContainer, StaggerItem, FadeIn } from "@/components/common/MotionWrapper";
+import { FadeIn } from "@/components/common/MotionWrapper";
 
 interface ProductCatalogViewProps {
   initialProducts: Product[];
@@ -17,7 +17,7 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const categoryFromUrl = searchParams.get("category") || "all";
+  const categoryFromUrl = (searchParams.get("category") || "all").toLowerCase().trim();
   const [prevCategoryFromUrl, setPrevCategoryFromUrl] = useState(categoryFromUrl);
   const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
 
@@ -31,11 +31,12 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
   const [filterType, setFilterType] = useState<"all" | "new" | "bestseller">("all");
 
   const handleCategoryChange = (slug: string) => {
-    setSelectedCategory(slug);
-    if (slug === "all") {
+    const targetSlug = slug.toLowerCase().trim();
+    setSelectedCategory(targetSlug);
+    if (targetSlug === "all") {
       router.push("/products", { scroll: false });
     } else {
-      router.push(`/products?category=${slug}`, { scroll: false });
+      router.push(`/products?category=${targetSlug}`, { scroll: false });
     }
   };
 
@@ -48,8 +49,9 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
 
   const filteredProducts = useMemo(() => {
     return initialProducts.filter((product) => {
-      // Category match
-      if (selectedCategory !== "all" && product.category !== selectedCategory) {
+      // Robust category match
+      const prodCategory = (product.category || "").toLowerCase().trim();
+      if (selectedCategory !== "all" && prodCategory !== selectedCategory) {
         return false;
       }
 
@@ -61,7 +63,7 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
         return false;
       }
 
-      // Search query
+      // Search query match
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
         const matchName = product.name.toLowerCase().includes(query);
@@ -79,7 +81,9 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { all: initialProducts.length };
     categories.forEach((cat) => {
-      counts[cat.slug] = initialProducts.filter((p) => p.category === cat.slug).length;
+      counts[cat.slug] = initialProducts.filter(
+        (p) => (p.category || "").toLowerCase().trim() === cat.slug.toLowerCase().trim()
+      ).length;
     });
     return counts;
   }, [initialProducts]);
@@ -118,7 +122,7 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
               onClick={() => handleCategoryChange("all")}
               className={`shrink-0 min-h-[40px] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
                 selectedCategory === "all"
-                  ? "bg-[#FFB83F] text-[#2D2320] shadow-sm"
+                  ? "bg-[#FFB83F] text-[#2D2320] shadow-sm font-bold"
                   : "bg-[#FFF6E9] text-[#5A4E46] hover:bg-[#FFECCB]"
               }`}
             >
@@ -136,7 +140,7 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
                   onClick={() => handleCategoryChange(cat.slug)}
                   className={`shrink-0 min-h-[40px] px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
                     isSelected
-                      ? "bg-[#FF777B] text-white shadow-sm"
+                      ? "bg-[#FF777B] text-white shadow-sm font-bold"
                       : "bg-[#FFF6E9] text-[#5A4E46] hover:bg-[#FFECCB]"
                   }`}
                 >
@@ -205,7 +209,7 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
             <span>
               {" "}thuộc danh mục{" "}
               <span className="font-bold text-[#2D2320]">
-                {categories.find((c) => c.slug === selectedCategory)?.name}
+                {categories.find((c) => c.slug === selectedCategory)?.name || selectedCategory}
               </span>
             </span>
           )}
@@ -219,13 +223,16 @@ export function ProductCatalogView({ initialProducts }: ProductCatalogViewProps)
 
       {/* Product Grid or Empty State */}
       {filteredProducts.length > 0 ? (
-        <StaggerContainer delay={0.06} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          key={`${selectedCategory}-${filterType}-${searchQuery}`}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-fadeInGrid"
+        >
           {filteredProducts.map((product) => (
-            <StaggerItem key={product.id} className="flex">
+            <div key={product.id} className="flex h-full">
               <ProductCard product={product} />
-            </StaggerItem>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       ) : (
         <div className="p-12 text-center rounded-3xl bg-white border border-[#EFE2D1] max-w-lg mx-auto shadow-sm space-y-4">
           <div className="w-16 h-16 mx-auto rounded-full bg-[#FFF2DE] flex items-center justify-center text-[#FFB83F]">
